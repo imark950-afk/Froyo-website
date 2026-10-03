@@ -46,7 +46,7 @@ a{color:#111111}a:hover{color:#444444}
               </button>
             </div>
             <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px">
-              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="7">
+              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="6">
                 <li>
                   <a href="{{m.href}}" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: #111111; padding: 12px 12px; border-radius: 14px; background: {{m.bg}}">
                     <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
@@ -75,27 +75,11 @@ a{color:#111111}a:hover{color:#444444}
 
   <main style="flex: 1 0 auto">
 
-  <!-- HERO -->
-  <section id="top" style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 80px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-    <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
-      <p style="margin: 0; display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: {{accent}}; padding: 8px 14px; border-radius: 999px">UK-wide mobile FroYo for events</p>
-      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(48px, 7vw, 96px); line-height: 0.95; letter-spacing: -0.035em">FroYo<br>that comes<br>to you.</h1>
-      <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #3A3A3A; max-width: 520px">From weddings and office parties to school fairs and festivals, our indoor cart and mobile trailer bring the swirl straight to your guests.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px">
-        <a href="https://app.froyoonthego.com" style="text-decoration: none; background: #111111; color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-weight: 700; font-size: 17px">Check availability</a>
-        <a href="services.html" style="text-decoration: none; border: 2px solid #111111; padding: 16px 26px; border-radius: 999px; font-weight: 700; font-size: 17px">See our setups</a>
-      </div>
-    </div>
-    <div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
-      <img src="images/froyo-logo.png" alt="FROYO on the go logo" style="width: 100%; max-width: 460px; aspect-ratio: 1 / 1; object-fit: contain; display: block">
-    </div>
-  </section>
-
   <!-- ABOUT -->
-  <section id="about" aria-labelledby="about-title" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 80px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: flex-start">
+  <section id="about" aria-labelledby="about-title" style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 56px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: flex-start">
     <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
       <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">About us</p>
-      <h2 id="about-title" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.02; letter-spacing: -0.03em">The UK’s first mobile FroYo events company.</h2>
+      <h1 id="about-title" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.02; letter-spacing: -0.03em">The UK’s first mobile FroYo events company.</h1>
       <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A3A3A; max-width: 560px">We’re a FroYo shop on wheels. With our FroYo trailer and indoor event cart, we bring fresh FroYo, waffles and vegan options to events right across the UK.</p>
     </div>
     <ul style="flex: 1 1 380px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
@@ -116,6 +100,22 @@ a{color:#111111}a:hover{color:#444444}
           <span style="font-size: 17px; font-weight: 700; line-height: 1.35">UK-wide</span>
         </li>
     </ul>
+  </section>
+
+  <!-- HERO -->
+  <section id="top" style="max-width: 1240px; margin: 0 auto; padding: 24px 24px 80px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+    <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+      <p style="margin: 0; display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: {{accent}}; padding: 8px 14px; border-radius: 999px">UK-wide mobile FroYo for events</p>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(48px, 7vw, 96px); line-height: 0.95; letter-spacing: -0.035em">FroYo<br>that comes<br>to you.</h2>
+      <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #3A3A3A; max-width: 520px">From weddings and office parties to school fairs and festivals, our indoor cart and mobile trailer bring the swirl straight to your guests.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        <a href="https://app.froyoonthego.com" style="text-decoration: none; background: #111111; color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-weight: 700; font-size: 17px">Check availability</a>
+        <a href="services.html" style="text-decoration: none; border: 2px solid #111111; padding: 16px 26px; border-radius: 999px; font-weight: 700; font-size: 17px">See our setups</a>
+      </div>
+    </div>
+    <div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
+      <img src="images/froyo-logo.png" alt="FROYO on the go logo" style="width: 100%; max-width: 460px; aspect-ratio: 1 / 1; object-fit: contain; display: block">
+    </div>
   </section>
 
   <!-- CTA -->
@@ -165,8 +165,7 @@ class Component extends DCLogic {
   sitePages() {
     return [
       { label: 'Home', desc: 'About us', href: 'index.html', kw: 'about us who we are front start main top welcome' },
-      { label: 'Services', desc: 'The Events Cart and the Mobile Trailer', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire' },
-      { label: 'Events', desc: 'Weddings, parties, corporate days and more', href: 'events.html', kw: 'wedding birthday party corporate festival school fair' },
+      { label: 'Services & events', desc: 'Our cart, trailer and the events we cover', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire events wedding birthday party corporate festival school fair' },
       { label: 'How it works', desc: 'Booking in three easy steps', href: 'how-it-works.html', kw: 'booking steps process date' },
       { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: 'loyalty.html', kw: 'stamps rewards free cup card points' },
       { label: 'Social', desc: 'Our Instagram, TikTok and Threads posts', href: 'social.html', kw: 'instagram tiktok threads posts photos videos slideshow' },

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FROYO on the go — Services</title>
-<meta name="description" content="Hire the FROYO on the go Events Cart for indoor venues or the Mobile Trailer for outdoor events and big crowds.">
-<meta property="og:title" content="FROYO on the go — Services">
-<meta property="og:description" content="Hire the FROYO on the go Events Cart for indoor venues or the Mobile Trailer for outdoor events and big crowds.">
+<title>FROYO on the go — Services &amp; events</title>
+<meta name="description" content="Hire the FROYO on the go Events Cart or Mobile Trailer for weddings, birthday parties, corporate events, festivals, school fairs and more.">
+<meta property="og:title" content="FROYO on the go — Services &amp; events">
+<meta property="og:description" content="Hire the FROYO on the go Events Cart or Mobile Trailer for weddings, birthday parties, corporate events, festivals, school fairs and more.">
 <meta property="og:image" content="https://froyoonthego.com/images/froyo-logo.png">
 <meta name="theme-color" content="#111111">
 <link rel="icon" type="image/png" href="images/froyo-logo.png">
@@ -46,7 +46,7 @@ a{color:#111111}a:hover{color:#444444}
               </button>
             </div>
             <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px">
-              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="7">
+              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="6">
                 <li>
                   <a href="{{m.href}}" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: #111111; padding: 12px 12px; border-radius: 14px; background: {{m.bg}}">
                     <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
@@ -111,6 +111,21 @@ a{color:#111111}a:hover{color:#444444}
     </div>
   </section>
 
+  <!-- EVENTS -->
+  <section id="events" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px">
+    <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 60px); line-height: 1; letter-spacing: -0.03em">Made for your moment.</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px">
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">Weddings</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); background: {{accent}}; border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">Birthday parties</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">Corporate events</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); background: #111111; color: #FFFFFF; border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">Festivals</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">School fairs</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">Product launches</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); background: {{accent}}; border: 2px solid #111111; border-radius: 999px; padding: 14px 28px">Sports days</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(20px, 2.4vw, 30px); border: 2px dashed #111111; border-radius: 999px; padding: 14px 28px">Something else? Ask us</span>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section style="padding: 0 24px 96px">
     <div style="max-width: 1240px; margin: 0 auto; background: {{accent}}; border-radius: 40px; padding: clamp(40px, 6vw, 80px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px">
@@ -149,7 +164,7 @@ a{color:#111111}a:hover{color:#444444}
 
 </div>
 </template>
-<script type="text/x-dc" id="logic" data-props='{"accent":{"editor":"color","default":"#F6C1CC","options":["#F6C1CC","#C9E4D2","#FFE08A","#C7D8F5"]},"$preview":{"width":1440,"height":1700}}'>
+<script type="text/x-dc" id="logic" data-props='{"accent":{"editor":"color","default":"#F6C1CC","options":["#F6C1CC","#C9E4D2","#FFE08A","#C7D8F5"]},"$preview":{"width":1440,"height":2300}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -158,8 +173,7 @@ class Component extends DCLogic {
   sitePages() {
     return [
       { label: 'Home', desc: 'About us', href: 'index.html', kw: 'about us who we are front start main top welcome' },
-      { label: 'Services', desc: 'The Events Cart and the Mobile Trailer', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire' },
-      { label: 'Events', desc: 'Weddings, parties, corporate days and more', href: 'events.html', kw: 'wedding birthday party corporate festival school fair' },
+      { label: 'Services & events', desc: 'Our cart, trailer and the events we cover', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire events wedding birthday party corporate festival school fair' },
       { label: 'How it works', desc: 'Booking in three easy steps', href: 'how-it-works.html', kw: 'booking steps process date' },
       { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: 'loyalty.html', kw: 'stamps rewards free cup card points' },
       { label: 'Social', desc: 'Our Instagram, TikTok and Threads posts', href: 'social.html', kw: 'instagram tiktok threads posts photos videos slideshow' },
