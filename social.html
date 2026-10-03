@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#FBFAF7}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(images/froyo-logo.png) center 55%/min(78vw,520px) no-repeat;opacity:.06}
 a{color:#111111}a:hover{color:#444444}
 </style>
 </head>
@@ -22,7 +23,7 @@ a{color:#111111}a:hover{color:#444444}
 <div id="root"></div>
 <template id="tpl">
 
-<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: #FBFAF7; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column">
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: transparent; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column">
 
   <!-- NAV -->
   <header style="position: relative; z-index: 40; border-bottom: 1px solid #E6E3DC; background: #FBFAF7">
