@@ -126,6 +126,79 @@ a{color:#111111}a:hover{color:#444444}
     </div>
   </section>
 
+  <!-- SOCIAL -->
+  <section id="social" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px">
+      <p style="margin: 0; align-self: flex-start; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: {{accent}}; padding: 8px 14px; border-radius: 999px">@froyo.onthego</p>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(44px, 6vw, 80px); line-height: 0.95; letter-spacing: -0.035em">Swirls from the road.</h2>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #3A3A3A">The latest from our events, straight from Instagram, TikTok and Threads.</p>
+    </div>
+    <div role="group" aria-label="Filter posts by platform" style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+        <button type="button" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="font-family: inherit; font-size: 15px; font-weight: 700; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 2px solid #111111; cursor: pointer; background: {{t.bg}}; color: {{t.fg}}">{{t.label}}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SLIDESHOW -->
+  
+
+  <!-- FOLLOW -->
+  <section aria-roledescription="carousel" aria-label="Social posts" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 56px">
+    <div style="background: #111111; color: #FFFFFF; border-radius: 40px; padding: clamp(24px, 4vw, 56px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(24px, 4vw, 56px)">
+      <sc-if value="{{cur.hasImg}}" hint-placeholder-val="{{ true }}">
+        <div aria-live="polite" style="flex: 1 1 340px; min-width: 0; max-width: 460px; margin: 0 auto; aspect-ratio: 4 / 5; border-radius: 24px; background: #000000; overflow: hidden">
+          <img src="{{cur.img}}" alt="{{cur.alt}}" style="width: 100%; height: 100%; object-fit: contain; display: block">
+        </div>
+      </sc-if>
+      <sc-if value="{{cur.noImg}}" hint-placeholder-val="{{ false }}">
+        <div aria-live="polite" style="flex: 1 1 340px; min-width: 0; max-width: 460px; margin: 0 auto; aspect-ratio: 4 / 5; border-radius: 24px; background: #262626; border: 2px dashed #555555; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; box-sizing: border-box; text-align: center">
+          <img src="images/froyo-logo.png" alt="" style="width: 96px; height: 96px; display: block; opacity: 0.5">
+          <span style="font-size: 15px; color: #BDBDBD">[{{cur.platform}} POST IMAGE {{cur.n}}]</span>
+        </div>
+      </sc-if>
+      <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: {{cur.badgeBg}}; color: #111111; padding: 8px 14px; border-radius: 999px">{{cur.platform}}</span>
+          <span style="font-size: 15px; color: #BDBDBD">{{cur.position}}</span>
+        </div>
+        <p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.02em">{{cur.caption}}</p>
+        <p style="margin: 0; font-size: 16px; color: #BDBDBD">{{cur.meta}}</p>
+        <a href="{{cur.url}}" style="align-self: flex-start; text-decoration: none; background: #FFFFFF; color: #111111; padding: 16px 24px; border-radius: 999px; font-weight: 700; font-size: 16px">View on {{cur.platform}}</a>
+        <div style="display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap">
+          <button type="button" onClick="{{prev}}" aria-label="Previous post" style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid #FFFFFF; background: transparent; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+          </button>
+          <button type="button" onClick="{{next}}" aria-label="Next post" style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid #FFFFFF; background: #FFFFFF; color: #111111; cursor: pointer; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </button>
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+            <sc-for list="{{dots}}" as="d" hint-placeholder-count="10">
+              <button type="button" onClick="{{d.pick}}" aria-label="{{d.label}}" style="width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+                <span style="display: block; height: 10px; border-radius: 999px; width: {{d.w}}; background: {{d.bg}}"></span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section style="max-width: 1240px; margin: 0 auto; padding: 0 24px 96px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+      <a href="https://www.instagram.com/froyo.onthego/" style="text-decoration: none; border: 2px solid #111111; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px">Instagram</span>
+        <span style="font-size: 16px; color: #3A3A3A">Follow @froyo.onthego</span>
+      </a>
+      <a href="https://www.tiktok.com/@froyo.onthego" style="text-decoration: none; border: 2px solid #111111; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 6px; background: {{accent}}">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px">TikTok</span>
+        <span style="font-size: 16px; color: #3A3A3A">Follow @froyo.onthego</span>
+      </a>
+      <a href="https://www.threads.com/@froyo.onthego" style="text-decoration: none; border: 2px solid #111111; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px">Threads</span>
+        <span style="font-size: 16px; color: #3A3A3A">Follow @froyo.onthego</span>
+      </a>
+    </div>
+  </section>
+
   </main>
 
   <!-- FOOTER -->
@@ -156,11 +229,11 @@ a{color:#111111}a:hover{color:#444444}
 
 </div>
 </template>
-<script type="text/x-dc" id="logic" data-props='{"accent":{"editor":"color","default":"#F6C1CC","options":["#F6C1CC","#C9E4D2","#FFE08A","#C7D8F5"]},"$preview":{"width":1440,"height":1900}}'>
+<script type="text/x-dc" id="logic" data-props='{"accent":{"editor":"color","default":"#F6C1CC","options":["#F6C1CC","#C9E4D2","#FFE08A","#C7D8F5"]},"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3400}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { menuOpen: false, query: '' };
+    this.state = { idx: 0, filter: 'All', menuOpen: false, query: '' };
   }
   sitePages() {
     return [
@@ -168,7 +241,7 @@ class Component extends DCLogic {
       { label: 'Services & Events', desc: 'Our cart, trailer and the events we cover', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire events wedding birthday party corporate festival school fair' },
       { label: 'How it works', desc: 'Booking in three easy steps', href: 'how-it-works.html', kw: 'booking steps process date' },
       { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: 'loyalty.html', kw: 'stamps rewards free cup card points' },
-      { label: 'Social', desc: 'Our Instagram, TikTok and Threads posts', href: 'social.html', kw: 'instagram tiktok threads posts photos videos slideshow' },
+      { label: 'Social', desc: 'Our Instagram, TikTok and Threads posts', href: 'index.html#social', kw: 'instagram tiktok threads posts photos videos slideshow' },
       { label: 'Book now', desc: 'Check dates at app.froyoonthego.com', href: 'https://app.froyoonthego.com', kw: 'book booking availability app reserve' }
     ];
   }
@@ -200,9 +273,95 @@ class Component extends DCLogic {
       noResults: list.length === 0
     };
   }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      if ((this.props.autoplay ?? true) === false) return;
+      this.step(1);
+    }, 5000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+  posts() {
+    const urls = {
+      Instagram: 'https://www.instagram.com/froyo.onthego/',
+      TikTok: 'https://www.tiktok.com/@froyo.onthego',
+      Threads: 'https://www.threads.com/@froyo.onthego'
+    };
+    const tiktok = [
+      { img: 'images/tiktok-3.jpg', alt: 'Autumn menu poster: Apple Crumble, Pastel de Nata and Waffle froyo cups, £7.50, extra toppings 50p each', caption: 'New autumn flavours: Apple Crumble, Pastel de Nata and Waffle. £7.50, extra toppings 50p each.' },
+      { img: 'images/tiktok-2.jpg', alt: 'The FROYO on the go cart set up indoors under a fringed parasol, with toppings jars and sauces', caption: 'Now booking for indoor and outdoor events.' },
+      { img: 'images/tiktok-1.jpg', alt: 'The FROYO on the go cart set up outdoors with the froyo machine, toppings and a fringed parasol', caption: 'Cart set up and ready to serve.' }
+    ];
+    const instagram = [
+      { img: 'images/insta-2.jpg', alt: 'A FROYO on the go cup piled with chocolate sauce, biscuit crumble, strawberries and raspberries in front of the black froyo trailer', caption: 'Breaking news: people who eat froyo regularly are 100% more likely to have a great day.' },
+      { img: 'images/insta-3.jpg', alt: '7-Day Froyo Forecast: a different topping combination for each day of the week, from Biscoff Monday to Treat Yourself Sunday', caption: 'Your 7-day froyo forecast: 100% chance of Biscoff, strawberries and good vibes.' },
+      { img: 'images/insta-1.jpg', alt: 'Labelled photo of the events cart: stylish canopy, froyo machine, premium toppings, sauces, fresh ingredients and serving area', caption: 'Everything you get with our events cart. Let’s make your event sweeter.' }
+    ];
+    const threads = [
+      { img: 'images/threads-1.jpg', date: '14 Sep 2026', alt: 'Video still of a long queue outside a busy froyo shop, captioned: POV, you just wanted froyo but the queue is 45 to 60 minutes', caption: 'Need your froyo fix without spending half your Sunday in a queue? Find us at Duck Pond Market, Ruislip.' },
+      { img: 'images/threads-2.jpg', date: '25 Aug 2026', alt: 'Video still of stacked froyo cups and fresh strawberries on the cart at a private event', caption: 'POV: you ask your cousin to help out at a private event and catch her taking full advantage of the free froyo.' },
+      { img: 'images/threads-3.jpg', date: '21 Aug 2026', alt: 'Video still of the froyo machine and custom-branded cups on a personalised event cart', caption: 'We’re back. Private parties, weddings, corporate events and pop-ups across the UK.' },
+      { img: 'images/threads-4.jpg', date: '2 Jul 2026', alt: 'Two climbers on a tall mast holding a pink banner reading: We climbed this to tell you to try the froyo', caption: 'We climbed all the way up here just to tell you: your event needs Froyo on the Go.' }
+    ];
+    const real = { TikTok: tiktok, Instagram: instagram, Threads: threads };
+    const order = ['Threads', 'TikTok', 'Instagram', 'Threads', 'TikTok', 'Instagram', 'Threads', 'TikTok', 'Instagram', 'Threads'];
+    const count = {};
+    const all = order.map((p) => {
+      count[p] = (count[p] || 0) + 1;
+      const r = real[p] ? real[p][count[p] - 1] : null;
+      return r
+        ? { platform: p, url: urls[p], n: count[p], img: r.img, alt: r.alt, caption: r.caption, meta: (r.date ? r.date + ' · ' : p + ' · ') + '@froyo.onthego' }
+        : { platform: p, url: urls[p], n: count[p], img: '', alt: '', caption: '[POST CAPTION]', meta: '[POST DATE] · @froyo.onthego' };
+    });
+    const f = this.state.filter;
+    return f === 'All' ? all : all.filter((x) => x.platform === f);
+  }
+  step(d) {
+    const len = this.posts().length;
+    this.setState({ idx: (this.state.idx + d + len) % len });
+  }
   renderVals() {
     const accent = this.props.accent ?? '#F6C1CC';
-    return { accent, ...this.menuVals() };
+    const list = this.posts();
+    const idx = Math.min(this.state.idx, list.length - 1);
+    const badges = { Instagram: accent, TikTok: '#FFFFFF', Threads: '#D9D9D9' };
+    const c = list[idx];
+    const cur = {
+      platform: c.platform,
+      url: c.url,
+      n: c.n,
+      img: c.img,
+      alt: c.alt,
+      caption: c.caption,
+      meta: c.meta,
+      hasImg: !!c.img,
+      noImg: !c.img,
+      badgeBg: badges[c.platform],
+      position: (idx + 1) + ' of ' + list.length
+    };
+    const dots = list.map((p, i) => ({
+      w: i === idx ? '28px' : '10px',
+      bg: i === idx ? accent : '#6B6B6B',
+      label: 'Show post ' + (i + 1),
+      pick: () => this.setState({ idx: i })
+    }));
+    const tabs = ['All', 'Instagram', 'TikTok', 'Threads'].map((label) => {
+      const on = this.state.filter === label;
+      return {
+        label,
+        pressed: on ? 'true' : 'false',
+        bg: on ? '#111111' : 'transparent',
+        fg: on ? '#FFFFFF' : '#111111',
+        pick: () => this.setState({ filter: label, idx: 0 })
+      };
+    });
+    return {
+      accent, cur, dots, tabs,
+      prev: () => this.step(-1),
+      next: () => this.step(1),
+      ...this.menuVals()
+    };
   }
 }
 </script>
