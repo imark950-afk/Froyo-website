@@ -22,7 +22,7 @@ a{color:#111111}a:hover{color:#444444}
 <div id="root"></div>
 <template id="tpl">
 
-<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: #FBFAF7; min-height: 100vh; overflow-x: hidden">
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: #FBFAF7; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column">
 
   <!-- NAV -->
   <header style="position: relative; z-index: 40; border-bottom: 1px solid #E6E3DC; background: #FBFAF7">
@@ -71,6 +71,7 @@ a{color:#111111}a:hover{color:#444444}
       </div>
     </nav>
   </header>
+  <main style="flex: 1 0 auto">
 
   <!-- INTRO -->
   <section style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
@@ -145,6 +146,8 @@ a{color:#111111}a:hover{color:#444444}
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer id="contact" style="background: #111111; color: #FFFFFF">
     <div style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
@@ -180,13 +183,12 @@ class Component extends DCLogic {
     this.state = { idx: 0, filter: 'All', menuOpen: false, query: '' };
   }
   sitePages() {
-    const home = 'index.html';
     return [
-      { label: 'Home', desc: 'The front page', href: home + '#top', kw: 'front start main top' },
-      { label: 'Services', desc: 'The Events Cart and the Mobile Trailer', href: home + '#services', kw: 'cart trailer setup indoor outdoor hire' },
-      { label: 'Events', desc: 'Weddings, parties, corporate days and more', href: home + '#events', kw: 'wedding birthday party corporate festival school fair' },
-      { label: 'How it works', desc: 'Booking in three easy steps', href: home + '#how', kw: 'booking steps process date' },
-      { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: home + '#loyalty', kw: 'stamps rewards free cup card points' },
+      { label: 'Home', desc: 'The front page', href: 'index.html', kw: 'front start main top welcome' },
+      { label: 'Services', desc: 'The Events Cart and the Mobile Trailer', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire' },
+      { label: 'Events', desc: 'Weddings, parties, corporate days and more', href: 'events.html', kw: 'wedding birthday party corporate festival school fair' },
+      { label: 'How it works', desc: 'Booking in three easy steps', href: 'how-it-works.html', kw: 'booking steps process date' },
+      { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: 'loyalty.html', kw: 'stamps rewards free cup card points' },
       { label: 'Social', desc: 'Our Instagram, TikTok and Threads posts', href: 'social.html', kw: 'instagram tiktok threads posts photos videos slideshow' },
       { label: 'Book now', desc: 'Check dates at app.froyoonthego.com', href: 'https://app.froyoonthego.com', kw: 'book booking availability app reserve' }
     ];
@@ -199,7 +201,7 @@ class Component extends DCLogic {
       if (!p) return;
       if (p.href.startsWith('http')) { window.open(p.href, '_blank', 'noopener'); }
       else if (p.href.startsWith('#')) { const el = document.getElementById(p.href.slice(1)); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
-      else { return; }
+      else { const a = document.querySelector('#site-menu a[href="' + p.href + '"]'); if (a) a.click(); return; }
       this.setState({ menuOpen: false, query: '' });
     };
     return {
