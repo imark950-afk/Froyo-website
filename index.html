@@ -45,7 +45,7 @@ a{color:#111111}a:hover{color:#444444}
               </button>
             </div>
             <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px">
-              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="8">
+              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="7">
                 <li>
                   <a href="{{m.href}}" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: #111111; padding: 12px 12px; border-radius: 14px; background: {{m.bg}}">
                     <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
@@ -274,7 +274,6 @@ class Component extends DCLogic {
       { label: 'How it works', desc: 'Booking in three easy steps', href: home + '#how', kw: 'booking steps process date' },
       { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: home + '#loyalty', kw: 'stamps rewards free cup card points' },
       { label: 'Social', desc: 'Our Instagram, TikTok and Threads posts', href: 'social.html', kw: 'instagram tiktok threads posts photos videos slideshow' },
-      { label: 'Contact', desc: 'Email us or follow @froyo.onthego', href: '#contact', kw: 'email phone contact follow' },
       { label: 'Book now', desc: 'Check dates at app.froyoonthego.com', href: 'https://app.froyoonthego.com', kw: 'book booking availability app reserve' }
     ];
   }
