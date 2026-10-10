@@ -153,6 +153,24 @@ class Component extends DCLogic {
       menuItems: list.map((p, i) => ({ label: p.label, desc: p.desc, href: p.href, bg: q && i === 0 ? '#F1EEE7' : 'transparent' }))
     };
   }
+  bindMenuClose() {
+    this.onDocPointer = (e) => {
+      if (!this.state.menuOpen) return;
+      const t = e.target;
+      if (t && t.closest && (t.closest('#site-menu') || t.closest('[aria-controls="site-menu"]'))) return;
+      this.setState({ menuOpen: false, query: '' });
+    };
+    this.onDocKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false, query: '' }); };
+    document.addEventListener('pointerdown', this.onDocPointer);
+    document.addEventListener('keydown', this.onDocKey);
+  }
+  componentDidMount() {
+    this.bindMenuClose();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('pointerdown', this.onDocPointer);
+    document.removeEventListener('keydown', this.onDocKey);
+  }
   renderVals() {
     const accent = this.props.accent ?? '#F6C1CC';
     return { accent, ...this.menuVals() };
