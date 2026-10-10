@@ -36,11 +36,7 @@ a{color:#111111}a:hover{color:#444444}
         <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
           <div id="site-menu" role="dialog" aria-label="Site menu" style="position: absolute; top: 100%; left: 0; margin-top: 10px; z-index: 50; width: 360px; max-width: calc(100vw - 48px); background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 24px; box-shadow: 0 18px 48px rgba(0,0,0,.16); padding: 16px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box">
             <div style="display: flex; align-items: center; gap: 8px">
-              <label for="site-search" style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; border: 2px solid #111111; border-radius: 999px; padding: 0 14px; min-height: 48px; box-sizing: border-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
-                <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search pages</span>
-                <input id="site-search" type="search" placeholder="Search pages…" autocomplete="off" value="{{query}}" onChange="{{onQuery}}" onKeyDown="{{onSearchKey}}" style="flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: #111111; padding: 12px 0">
-              </label>
+              <span style="flex: 1; min-width: 0; padding-left: 12px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">Pages</span>
               <button type="button" onClick="{{closeMenu}}" aria-label="Close menu" style="flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #F1EEE7; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111111">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
               </button>
@@ -58,9 +54,6 @@ a{color:#111111}a:hover{color:#444444}
                 </li>
               </sc-for>
             </ul>
-            <sc-if value="{{noResults}}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; padding: 8px 12px 4px; font-size: 15px; color: #5A5A5A">No pages match “{{query}}”. Try “events” or “loyalty”.</p>
-            </sc-if>
           </div>
         </sc-if>
       </div>
@@ -229,11 +222,11 @@ class Component extends DCLogic {
   }
   sitePages() {
     return [
-      { label: 'Home', desc: 'About us', href: 'index.html', kw: 'about us who we are front start main top welcome' },
+      { label: 'Home', desc: 'Our Story', href: 'index.html', kw: 'our story about us who we are front start main top welcome' },
       { label: 'Services & Events', desc: 'Our cart, trailer and the events we cover', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire events wedding birthday party corporate festival school fair' },
       { label: 'How it works', desc: 'Booking in three easy steps', href: 'how-it-works.html', kw: 'booking steps process date' },
       { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: 'loyalty.html', kw: 'stamps rewards free cup card points' },
-      { label: 'Book now', desc: 'Check dates at app.froyoonthego.com', href: 'https://app.froyoonthego.com', kw: 'book booking availability app reserve' }
+      { label: 'Book now', desc: 'Check availability & book your event', href: 'https://app.froyoonthego.com', kw: 'book booking availability app reserve' }
     ];
   }
   menuVals() {
@@ -260,8 +253,7 @@ class Component extends DCLogic {
         if (e.key === 'Escape') this.setState({ menuOpen: false, query: '' });
         if (e.key === 'Enter') { e.preventDefault(); go(list[0]); }
       },
-      menuItems: list.map((p, i) => ({ label: p.label, desc: p.desc, href: p.href, bg: q && i === 0 ? '#F1EEE7' : 'transparent' })),
-      noResults: list.length === 0
+      menuItems: list.map((p, i) => ({ label: p.label, desc: p.desc, href: p.href, bg: q && i === 0 ? '#F1EEE7' : 'transparent' }))
     };
   }
   componentDidMount() {
