@@ -3,353 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FROYO on the go — Home</title>
-<meta name="description" content="The UK’s first mobile FroYo events company. Fresh FroYo, waffles and vegan options from our FroYo trailer and indoor event cart, UK-wide.">
-<meta property="og:title" content="FROYO on the go — Home">
-<meta property="og:description" content="The UK’s first mobile FroYo events company. Fresh FroYo, waffles and vegan options from our FroYo trailer and indoor event cart, UK-wide.">
-<meta property="og:image" content="https://froyoonthego.com/images/froyo-logo.png">
+<title>FROYO on the go — Coming soon</title>
+<meta name="description" content="The UK’s first mobile FroYo events company. Our new website is coming soon.">
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#111111">
 <link rel="icon" type="image/png" href="images/froyo-logo.png">
 <link rel="apple-touch-icon" href="images/froyo-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;family=Cormorant+Garamond:wght@600;700&amp;family=Jost:wght@400;500;700;800&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <style>
-html{scroll-padding-top:120px}body{margin:0;background:#FBFAF7}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(images/froyo-logo.png) center 55%/min(78vw,520px) no-repeat;opacity:.06}
-a{color:#111111}a:hover{color:#444444}
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{background:#FBFAF7;color:#111111;font-family:'DM Sans',system-ui,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(images/froyo-logo.png) center 55%/min(78vw,520px) no-repeat;opacity:.06}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+  .card{max-width:640px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+  .logo{width:132px;height:132px;display:block}
+  .pill{margin:0;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#F6C1CC;padding:8px 14px;border-radius:999px}
+  h1{margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,8vw,84px);line-height:.95;letter-spacing:-.035em}
+  p.lead{margin:0;font-size:19px;line-height:1.6;color:#3A3A3A;max-width:520px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn{text-decoration:none;font-weight:700;font-size:17px;padding:16px 26px;border-radius:999px;border:2px solid #111111;color:#111111;background:#FFFFFF;min-height:44px}
+  .btn.primary{background:#111111;color:#FFFFFF}
+  .btn:hover{opacity:.85}
+  .social{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;font-size:15px}
+  .social a{color:#111111}
+  footer{padding:20px 24px;text-align:center;font-size:13px;color:#6B6B6B}
 </style>
 </head>
 <body>
-<div id="root"></div>
-<template id="tpl">
-
-<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: transparent; min-height: 100vh; overflow-x: clip; display: flex; flex-direction: column">
-
-  <!-- NAV -->
-  <header style="position: sticky; top: 0; z-index: 40; border-bottom: 1px solid #E6E3DC; background: #FBFAF7">
-    <nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: 18px 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px">
-      <div style="position: relative; justify-self: start; display: flex; flex-direction: column; align-items: flex-start">
-        <button type="button" onClick="{{toggleMenu}}" aria-expanded="{{menuExpanded}}" aria-controls="site-menu" style="font-family: inherit; font-size: 14px; font-weight: 700; min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 8px 16px 8px 12px; border-radius: 999px; border: 2px solid #111111; background: {{menuBtnBg}}; color: {{menuBtnFg}}; cursor: pointer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-          Menu
-        </button>
-        <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
-          <div id="site-menu" role="dialog" aria-label="Site menu" style="position: absolute; top: 100%; left: 0; margin-top: 10px; z-index: 50; width: 360px; max-width: calc(100vw - 48px); background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 24px; box-shadow: 0 18px 48px rgba(0,0,0,.16); padding: 8px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box">
-            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px">
-              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="5">
-                <li>
-                  <a href="{{m.href}}" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: #111111; padding: 12px 12px; border-radius: 14px; background: {{m.bg}}">
-                    <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
-                      <span style="font-weight: 700; font-size: 16px">{{m.label}}</span>
-                      <span style="font-size: 13.5px; color: #5A5A5A">{{m.desc}}</span>
-                    </span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M9 18l6-6-6-6"></path></svg>
-                  </a>
-                </li>
-              </sc-for>
-            </ul>
-          </div>
-        </sc-if>
-      </div>
-      <a href="index.html" aria-label="FROYO on the go, home" style="justify-self: center; display: block; text-decoration: none">
-        <img src="images/froyo-logo.png" alt="FROYO on the go" style="width: 72px; height: 72px; display: block">
-      </a>
-      <div style="justify-self: end; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; font-size: 15px; font-weight: 500">
-        <a href="https://app.froyoonthego.com" style="text-decoration: none; background: #111111; color: #FFFFFF; padding: 12px 20px; border-radius: 999px; font-weight: 700">Book us</a>
-      </div>
-    </nav>
-  </header>
-
-  <main style="flex: 1 0 auto">
-
-  <!-- ABOUT -->
-  <section id="about" aria-labelledby="about-title" style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 56px; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: flex-start">
-    <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
-      <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">About us</p>
-      <h1 id="about-title" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.02; letter-spacing: -0.03em">The UK’s first mobile FroYo events company.</h1>
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A3A3A; max-width: 560px">Froyo on the go is a specialist mobile frozen yoghurt catering company, serving both classic and vegan frozen yoghurt at events across the UK.</p>
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A3A3A; max-width: 560px">From weddings and private celebrations to corporate events, festivals and markets, we bring a distinctive dessert experience directly to your guests through our signature mobile trailer and contemporary indoor cart.</p>
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A3A3A; max-width: 560px">Our frozen yoghurt is freshly served and can be personalised with a selection of toppings and sauces. Vegan frozen yoghurt is also available, allowing us to cater for a wider range of dietary preferences and requirements.</p>
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A3A3A; max-width: 560px">With flexible indoor and outdoor setups and packages tailored to your event and guest numbers, we provide a professional, engaging and memorable catering experience.</p>
-      <p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: #111111; max-width: 560px">Freshly swirled. Beautifully served. Made for everyone.</p>
+<main>
+  <div class="card">
+    <img class="logo" src="images/froyo-logo.png" alt="FROYO on the go">
+    <p class="pill">Coming soon</p>
+    <h1>Our new website is on its way.</h1>
+    <p class="lead">The UK’s first mobile FroYo events company. You can already book our FroYo trailer or indoor event cart in our booking app.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://app.froyoonthego.com">Check availability &amp; book your event</a>
+      <a class="btn" href="mailto:froyoontap@gmail.com">Email us</a>
     </div>
-    <ul style="flex: 1 1 380px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
-        <li style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 20px; padding: 18px 20px">
-          <span style="flex: none; width: 44px; height: 44px; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="15" r="6"></circle><path d="M8.5 10.2L6 3h4l2 4.5M15.5 10.2L18 3h-4l-2 4.5"></path><path d="M12 12.5l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"></path></svg></span>
-          <span style="font-size: 17px; font-weight: 700; line-height: 1.35">UK’s first mobile FroYo events company</span>
-        </li>
-        <li style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 20px; padding: 18px 20px">
-          <span style="flex: none; width: 44px; height: 44px; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"></path></svg></span>
-          <span style="font-size: 17px; font-weight: 700; line-height: 1.35">FroYo trailer + indoor event cart</span>
-        </li>
-        <li style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 20px; padding: 18px 20px">
-          <span style="flex: none; width: 44px; height: 44px; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h14l-1.6 9.6a1.5 1.5 0 0 1-1.5 1.4H8.1a1.5 1.5 0 0 1-1.5-1.4z"></path><path d="M6 10c0-2.2 1.8-3.4 3.6-3.4 0-2 1.4-3.3 2.4-4.1 1 .8 2.4 2.1 2.4 4.1 1.8 0 3.6 1.2 3.6 3.4"></path></svg></span>
-          <span style="font-size: 17px; font-weight: 700; line-height: 1.35">Fresh FroYo, waffles + vegan options</span>
-        </li>
-        <li style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 20px; padding: 18px 20px">
-          <span style="flex: none; width: 44px; height: 44px; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"></path><path d="M5 19l7-7"></path></svg></span>
-          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
-            <span style="font-size: 17px; font-weight: 700; line-height: 1.35">Classic &amp; Vegan FroYo</span>
-            <span style="font-size: 15px; line-height: 1.45; color: #4A4A4A">Frozen yoghurt options to suit a range of dietary preferences.</span>
-          </span>
-        </li>
-        <li style="display: flex; align-items: center; gap: 14px; background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 20px; padding: 18px 20px">
-          <span style="flex: none; width: 44px; height: 44px; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span>
-          <span style="font-size: 17px; font-weight: 700; line-height: 1.35">UK-wide</span>
-        </li>
-    </ul>
-  </section>
-
-  <!-- HERO -->
-  <section id="top" style="padding: 0 24px 72px">
-    <div style="max-width: 1240px; margin: 0 auto; background: {{accent}}; border-radius: 40px; padding: clamp(32px, 5vw, 56px) clamp(24px, 6vw, 80px); box-sizing: border-box">
-      <div style="display: flex; flex-wrap: wrap; gap: 12px">
-        <a href="https://app.froyoonthego.com" style="text-decoration: none; background: #111111; color: #FFFFFF; padding: 18px 28px; border-radius: 999px; font-weight: 700; font-size: 17px">Check availability</a>
-        <a href="services.html" style="text-decoration: none; background: #FFFFFF; border: 2px solid #111111; padding: 16px 26px; border-radius: 999px; font-weight: 700; font-size: 17px">See our setups</a>
-      </div>
+    <div class="social" aria-label="Follow us">
+      <a href="https://www.instagram.com/froyo.onthego/">Instagram</a>
+      <a href="https://www.tiktok.com/@froyo.onthego">TikTok</a>
     </div>
-  </section>
-
-  <!-- SOCIAL -->
-  <section id="social" style="max-width: 1240px; margin: 0 auto; padding: 24px 24px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px">
-      <p style="margin: 0; align-self: flex-start; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: {{accent}}; padding: 8px 14px; border-radius: 999px">@froyo.onthego</p>
-      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(44px, 6vw, 80px); line-height: 0.95; letter-spacing: -0.035em">Swirls from the road.</h2>
-      <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #3A3A3A">The latest from our events, straight from Instagram and TikTok.</p>
-    </div>
-    <div role="group" aria-label="Filter posts by platform" style="display: flex; flex-wrap: wrap; gap: 8px">
-      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
-        <button type="button" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="font-family: inherit; font-size: 15px; font-weight: 700; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 2px solid #111111; cursor: pointer; background: {{t.bg}}; color: {{t.fg}}">{{t.label}}</button>
-      </sc-for>
-    </div>
-  </section>
-
-  <!-- SLIDESHOW -->
-  
-
-  <!-- FOLLOW -->
-  <section aria-roledescription="carousel" aria-label="Social posts" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 56px">
-    <div style="background: #111111; color: #FFFFFF; border-radius: 40px; padding: clamp(24px, 4vw, 56px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(24px, 4vw, 56px)">
-      <sc-if value="{{cur.hasImg}}" hint-placeholder-val="{{ true }}">
-        <div aria-live="polite" style="flex: 1 1 340px; min-width: 0; max-width: 460px; margin: 0 auto; aspect-ratio: 4 / 5; border-radius: 24px; background: #000000; overflow: hidden">
-          <img src="{{cur.img}}" alt="{{cur.alt}}" style="width: 100%; height: 100%; object-fit: contain; display: block">
-        </div>
-      </sc-if>
-      <sc-if value="{{cur.noImg}}" hint-placeholder-val="{{ false }}">
-        <div aria-live="polite" style="flex: 1 1 340px; min-width: 0; max-width: 460px; margin: 0 auto; aspect-ratio: 4 / 5; border-radius: 24px; background: #262626; border: 2px dashed #555555; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; box-sizing: border-box; text-align: center">
-          <img src="images/froyo-logo.png" alt="" style="width: 96px; height: 96px; display: block; opacity: 0.5">
-          <span style="font-size: 15px; color: #BDBDBD">[{{cur.platform}} POST IMAGE {{cur.n}}]</span>
-        </div>
-      </sc-if>
-      <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
-        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
-          <span style="font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: {{cur.badgeBg}}; color: #111111; padding: 8px 14px; border-radius: 999px">{{cur.platform}}</span>
-          <span style="font-size: 15px; color: #BDBDBD">{{cur.position}}</span>
-        </div>
-        <p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.02em">{{cur.caption}}</p>
-        <p style="margin: 0; font-size: 16px; color: #BDBDBD">{{cur.meta}}</p>
-        <a href="{{cur.url}}" style="align-self: flex-start; text-decoration: none; background: #FFFFFF; color: #111111; padding: 16px 24px; border-radius: 999px; font-weight: 700; font-size: 16px">View on {{cur.platform}}</a>
-        <div style="display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap">
-          <button type="button" onClick="{{prev}}" aria-label="Previous post" style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid #FFFFFF; background: transparent; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
-          </button>
-          <button type="button" onClick="{{next}}" aria-label="Next post" style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid #FFFFFF; background: #FFFFFF; color: #111111; cursor: pointer; display: flex; align-items: center; justify-content: center">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
-          </button>
-          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
-            <sc-for list="{{dots}}" as="d" hint-placeholder-count="6">
-              <button type="button" onClick="{{d.pick}}" aria-label="{{d.label}}" style="width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
-                <span style="display: block; height: 10px; border-radius: 999px; width: {{d.w}}; background: {{d.bg}}"></span>
-              </button>
-            </sc-for>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><section style="max-width: 1240px; margin: 0 auto; padding: 0 24px 96px">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
-      <a href="https://www.instagram.com/froyo.onthego/" style="text-decoration: none; border: 2px solid #111111; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 6px">
-        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px">Instagram</span>
-        <span style="font-size: 16px; color: #3A3A3A">Follow @froyo.onthego</span>
-      </a>
-      <a href="https://www.tiktok.com/@froyo.onthego" style="text-decoration: none; border: 2px solid #111111; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 6px; background: {{accent}}">
-        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px">TikTok</span>
-        <span style="font-size: 16px; color: #3A3A3A">Follow @froyo.onthego</span>
-      </a>
-    </div>
-  </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer id="contact" style="background: #111111; color: #FFFFFF">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
-      <div style="display: flex; flex-direction: column; gap: 10px">
-        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px">FROYO <span style="font-weight: 500; font-style: italic">on the go</span></span>
-        <span style="font-size: 15px; color: #CFCFCF">UK-wide mobile FroYo for events</span>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; font-size: 15px">
-        <div style="display: flex; flex-direction: column; gap: 8px">
-          <span style="font-weight: 700">Contact</span>
-          <a href="mailto:froyoontap@gmail.com" style="color: #CFCFCF">froyoontap@gmail.com</a>
-          <span style="color: #CFCFCF">[YOUR PHONE]</span>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px">
-          <span style="font-weight: 700">Follow</span>
-          <a href="https://www.instagram.com/froyo.onthego/" style="color: #CFCFCF">Instagram @froyo.onthego</a>
-          <a href="https://www.tiktok.com/@froyo.onthego" style="color: #CFCFCF">TikTok @froyo.onthego</a>
-        </div>
-      </div>
-    </div>
-    <div style="border-top: 1px solid #2E2E2E">
-      <p style="max-width: 1240px; margin: 0 auto; padding: 20px 24px; font-size: 13px; color: #A8A8A8">© 2026 froyoonthego.com</p>
-    </div>
-  </footer>
-
-</div>
-</template>
-<script type="text/x-dc" id="logic" data-props='{"accent":{"editor":"color","default":"#F6C1CC","options":["#F6C1CC","#C9E4D2","#FFE08A","#C7D8F5"]},"autoplay":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3400}}'>
-class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    this.state = { idx: 0, filter: 'All', menuOpen: false, query: '' };
-  }
-  sitePages() {
-    return [
-      { label: 'Home', desc: 'Our Story', href: 'index.html', kw: 'our story about us who we are front start main top welcome' },
-      { label: 'Services & Events', desc: 'Our cart, trailer and events we cater for', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire events wedding birthday party corporate festival school fair' },
-      { label: 'How it works', desc: 'Booking with us', href: 'how-it-works.html', kw: 'booking steps process date' },
-      { label: 'Loyalty card', desc: 'Collect stamps, get free froyo', href: 'loyalty.html', kw: 'stamps rewards free cup card points' },
-      { label: 'Book now', desc: 'Check availability & book your event', href: 'https://app.froyoonthego.com', kw: 'book booking availability app reserve' }
-    ];
-  }
-  menuVals() {
-    const open = !!this.state.menuOpen;
-    const q = (this.state.query || '').trim().toLowerCase();
-    const list = this.sitePages().filter((p) => !q || (p.label + ' ' + p.desc + ' ' + p.kw).toLowerCase().includes(q));
-    const go = (p) => {
-      if (!p) return;
-      if (p.href.startsWith('http')) { window.open(p.href, '_blank', 'noopener'); }
-      else if (p.href.startsWith('#')) { const el = document.getElementById(p.href.slice(1)); if (el) el.scrollIntoView({ behavior: 'smooth' }); }
-      else { const a = document.querySelector('#site-menu a[href="' + p.href + '"]'); if (a) a.click(); return; }
-      this.setState({ menuOpen: false, query: '' });
-    };
-    return {
-      menuOpen: open,
-      menuExpanded: open ? 'true' : 'false',
-      menuBtnBg: open ? '#111111' : 'transparent',
-      menuBtnFg: open ? '#FFFFFF' : '#111111',
-      toggleMenu: () => this.setState({ menuOpen: !open, query: '' }),
-      closeMenu: () => this.setState({ menuOpen: false, query: '' }),
-      query: this.state.query || '',
-      onQuery: (e) => this.setState({ query: e.target.value }),
-      onSearchKey: (e) => {
-        if (e.key === 'Escape') this.setState({ menuOpen: false, query: '' });
-        if (e.key === 'Enter') { e.preventDefault(); go(list[0]); }
-      },
-      menuItems: list.map((p, i) => ({ label: p.label, desc: p.desc, href: p.href, bg: q && i === 0 ? '#F1EEE7' : 'transparent' }))
-    };
-  }
-  componentDidMount() {
-    this.bindMenuClose();
-    this.timer = setInterval(() => {
-      if ((this.props.autoplay ?? true) === false) return;
-      this.step(1);
-    }, 5000);
-  }
-  componentWillUnmount() {
-    document.removeEventListener('pointerdown', this.onDocPointer);
-    document.removeEventListener('keydown', this.onDocKey);
-    clearInterval(this.timer);
-  }
-  posts() {
-    const urls = {
-      Instagram: 'https://www.instagram.com/froyo.onthego/',
-      TikTok: 'https://www.tiktok.com/@froyo.onthego'
-    };
-    const tiktok = [
-      { img: 'images/tiktok-3.jpg', alt: 'Autumn menu poster: Apple Crumble, Pastel de Nata and Waffle froyo cups, £7.50, extra toppings 50p each', caption: 'New autumn flavours: Apple Crumble, Pastel de Nata and Waffle. £7.50, extra toppings 50p each.' },
-      { img: 'images/tiktok-2.jpg', alt: 'The FROYO on the go cart set up indoors under a fringed parasol, with toppings jars and sauces', caption: 'Now booking for indoor and outdoor events.' },
-      { img: 'images/tiktok-1.jpg', alt: 'The FROYO on the go cart set up outdoors with the froyo machine, toppings and a fringed parasol', caption: 'Cart set up and ready to serve.' }
-    ];
-    const instagram = [
-      { img: 'images/insta-2.jpg', alt: 'A FROYO on the go cup piled with chocolate sauce, biscuit crumble, strawberries and raspberries in front of the black froyo trailer', caption: 'Breaking news: people who eat froyo regularly are 100% more likely to have a great day.' },
-      { img: 'images/insta-3.jpg', alt: '7-Day Froyo Forecast: a different topping combination for each day of the week, from Biscoff Monday to Treat Yourself Sunday', caption: 'Your 7-day froyo forecast: 100% chance of Biscoff, strawberries and good vibes.' },
-      { img: 'images/insta-1.jpg', alt: 'Labelled photo of the events cart: stylish canopy, froyo machine, premium toppings, sauces, fresh ingredients and serving area', caption: 'Everything you get with our events cart. Let’s make your event sweeter.' }
-    ];
-    const real = { TikTok: tiktok, Instagram: instagram };
-    const order = ['TikTok', 'Instagram', 'TikTok', 'Instagram', 'TikTok', 'Instagram'];
-    const count = {};
-    const all = order.map((p) => {
-      count[p] = (count[p] || 0) + 1;
-      const r = real[p] ? real[p][count[p] - 1] : null;
-      return r
-        ? { platform: p, url: urls[p], n: count[p], img: r.img, alt: r.alt, caption: r.caption, meta: (r.date ? r.date + ' · ' : p + ' · ') + '@froyo.onthego' }
-        : { platform: p, url: urls[p], n: count[p], img: '', alt: '', caption: '[POST CAPTION]', meta: '[POST DATE] · @froyo.onthego' };
-    });
-    const f = this.state.filter;
-    return f === 'All' ? all : all.filter((x) => x.platform === f);
-  }
-  step(d) {
-    const len = this.posts().length;
-    this.setState({ idx: (this.state.idx + d + len) % len });
-  }
-  bindMenuClose() {
-    this.onDocPointer = (e) => {
-      if (!this.state.menuOpen) return;
-      const t = e.target;
-      if (t && t.closest && (t.closest('#site-menu') || t.closest('[aria-controls="site-menu"]'))) return;
-      this.setState({ menuOpen: false, query: '' });
-    };
-    this.onDocKey = (e) => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false, query: '' }); };
-    document.addEventListener('pointerdown', this.onDocPointer);
-    document.addEventListener('keydown', this.onDocKey);
-  }
-  renderVals() {
-    const accent = this.props.accent ?? '#F6C1CC';
-    const list = this.posts();
-    const idx = Math.min(this.state.idx, list.length - 1);
-    const badges = { Instagram: accent, TikTok: '#FFFFFF' };
-    const c = list[idx];
-    const cur = {
-      platform: c.platform,
-      url: c.url,
-      n: c.n,
-      img: c.img,
-      alt: c.alt,
-      caption: c.caption,
-      meta: c.meta,
-      hasImg: !!c.img,
-      noImg: !c.img,
-      badgeBg: badges[c.platform],
-      position: (idx + 1) + ' of ' + list.length
-    };
-    const dots = list.map((p, i) => ({
-      w: i === idx ? '28px' : '10px',
-      bg: i === idx ? accent : '#6B6B6B',
-      label: 'Show post ' + (i + 1),
-      pick: () => this.setState({ idx: i })
-    }));
-    const tabs = ['All', 'Instagram', 'TikTok'].map((label) => {
-      const on = this.state.filter === label;
-      return {
-        label,
-        pressed: on ? 'true' : 'false',
-        bg: on ? '#111111' : 'transparent',
-        fg: on ? '#FFFFFF' : '#111111',
-        pick: () => this.setState({ filter: label, idx: 0 })
-      };
-    });
-    return {
-      accent, cur, dots, tabs,
-      prev: () => this.step(-1),
-      next: () => this.step(1),
-      ...this.menuVals()
-    };
-  }
-}
-</script>
-<script src="runtime.js"></script>
-<noscript><p style="font-family:sans-serif;padding:24px">Please turn on JavaScript to view this page, or email froyoontap@gmail.com.</p></noscript>
+  </div>
+</main>
+<footer>© 2026 froyoonthego.com</footer>
 </body>
 </html>
