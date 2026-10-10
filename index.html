@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=DM+Sans:wght@400;500;700&amp;family=Cormorant+Garamond:wght@600;700&amp;family=Jost:wght@400;500;700;800&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#FBFAF7}
+html{scroll-padding-top:120px}body{margin:0;background:#FBFAF7}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(images/froyo-logo.png) center 55%/min(78vw,520px) no-repeat;opacity:.06}
 a{color:#111111}a:hover{color:#444444}
 </style>
@@ -23,10 +23,10 @@ a{color:#111111}a:hover{color:#444444}
 <div id="root"></div>
 <template id="tpl">
 
-<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: transparent; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column">
+<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #111111; background: transparent; min-height: 100vh; overflow-x: clip; display: flex; flex-direction: column">
 
   <!-- NAV -->
-  <header style="position: relative; z-index: 40; border-bottom: 1px solid #E6E3DC; background: #FBFAF7">
+  <header style="position: sticky; top: 0; z-index: 40; border-bottom: 1px solid #E6E3DC; background: #FBFAF7">
     <nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: 18px 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px">
       <div style="position: relative; justify-self: start; display: flex; flex-direction: column; align-items: flex-start">
         <button type="button" onClick="{{toggleMenu}}" aria-expanded="{{menuExpanded}}" aria-controls="site-menu" style="font-family: inherit; font-size: 14px; font-weight: 700; min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 8px 16px 8px 12px; border-radius: 999px; border: 2px solid #111111; background: {{menuBtnBg}}; color: {{menuBtnFg}}; cursor: pointer">
