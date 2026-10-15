@@ -36,7 +36,7 @@ a{color:#111111}a:hover{color:#444444}
         <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
           <div id="site-menu" role="dialog" aria-label="Site menu" style="position: absolute; top: 100%; left: 0; margin-top: 10px; z-index: 50; width: 360px; max-width: calc(100vw - 48px); background: #FFFFFF; border: 1px solid #E6E3DC; border-radius: 24px; box-shadow: 0 18px 48px rgba(0,0,0,.16); padding: 8px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box">
             <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px">
-              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="5">
+              <sc-for list="{{menuItems}}" as="m" hint-placeholder-count="6">
                 <li>
                   <a href="{{m.href}}" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: #111111; padding: 12px 12px; border-radius: 14px; background: {{m.bg}}">
                     <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
@@ -158,6 +158,7 @@ class Component extends DCLogic {
   }
   sitePages() {
     return [
+      { label: 'Home', desc: 'Freshly swirled. Beautifully served.', href: 'index.html', kw: 'home start main top welcome' },
       { label: 'About', desc: 'Our Story', href: 'about.html', kw: 'our story about us who we are company' },
       { label: 'Services & Events', desc: 'Our cart, trailer and events we cater for', href: 'services.html', kw: 'cart trailer setup indoor outdoor hire events wedding birthday party corporate festival school fair' },
       { label: 'How it works', desc: 'Booking with us', href: 'how-it-works.html', kw: 'booking steps process date' },
